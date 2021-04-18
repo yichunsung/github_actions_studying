@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
 
       # Build the Docker image
-      - name: Build
+      - name: Build Image
         run: |-
           docker build --tag "gcr.io/elk-tree-studio/gitub_actions_studying:latest" .
 
