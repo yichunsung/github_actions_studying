@@ -23,9 +23,22 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      # Build the Docker image
+      - name: Build
+        run: |-
+          docker build --tag "gcr.io/elk-tree-studio/gitub_actions_studying:latest" .
+
+      - name: Docker Login
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: docker login -u oauth2accesstoken -p $ACCESS_TOKEN https://gcr.io
+
+      - name: Docker Push
+        run: docker push gcr.io/elk-tree-studio/gitub_actions_studying
+
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world! YOYO.
+      - name: Successfully
+        run: echo Successfully ~~~~~~~~~~~~
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
