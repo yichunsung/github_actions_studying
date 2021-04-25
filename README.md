@@ -2,24 +2,29 @@
 
 1. 建立測試
 
-	* lint test
+  * lint test
 
-	* unit test
+  * unit test
 
 2. 建立部署流程
 
-	* 先熟知你要部署的流程
+  * 先熟知你要部署的流程
 
-	* 來點Docker吧
+  * 來點Docker吧
 
 3. 搭建部署環境
 
-	* GCE VM使用
-	* GCR 使用
+  * GCE VM使用
+
+  * GCR 使用
 
 4. 設定你的第一個github actions workflows
 
 5. 使用你的github actions
+  
+  * 設定Secrets 變數
+
+  * 設定你的yml
 
 6. 測試
 
