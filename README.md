@@ -24,6 +24,14 @@
   
   * 設定Secrets 變數
 
+    * gcloud login
+
+```bash
+
+$ gcloud auth print-access-token
+
+```
+
   * 設定你的yml
 
 6. 測試
