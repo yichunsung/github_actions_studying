@@ -26,7 +26,8 @@ jobs:
 
       - name: Lint 🧐
         run: npm run lint
-       - name: Unit Test 🧐
+
+      - name: Unit Test 🧐
         run: npm run test
   # This workflow contains a single job called "build"
   build:
