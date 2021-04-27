@@ -48,9 +48,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@master
 
       - name: create key
-        run: |-
-        gcloud iam service-accounts keys create helloworld-key.json \
-        --iam-account=ycsung-r@elk-tree-studio.iam.gserviceaccount.com
+        run: gcloud iam service-accounts keys create helloworld-key.json --iam-account=ycsung-r@elk-tree-studio.iam.gserviceaccount.com
 
       - name: gcloud auth
         run: gcloud auth activate-service-account ycsung-r@elk-tree-studio.iam.gserviceaccount.com --key-file=helloworld-key.json
