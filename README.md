@@ -16,6 +16,10 @@
 
   * GCE VM使用
 
+  	* 創建一個VM 的 key
+
+  		[文件](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#createsshkeys)
+
   * GCR 使用
 
 4. 設定你的第一個github actions workflows
