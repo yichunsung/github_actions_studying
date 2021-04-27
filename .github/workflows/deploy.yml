@@ -44,10 +44,20 @@ jobs:
         run: |-
           docker build --tag "gcr.io/elk-tree-studio/gitub_actions_studying:latest" .
 
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+
+      - name: create key
+        run: gcloud iam service-accounts keys create helloworld-key.json --iam-account=ycsung-r@elk-tree-studio.iam.gserviceaccount.com
+
+      - name: gcloud auth
+        run: gcloud auth activate-service-account ycsung-r@elk-tree-studio.iam.gserviceaccount.com --key-file=helloworld-key.json
+
+      - name: docker key file json building
+        run: gcloud iam service-accounts keys create keyfile.json --iam-account ycsung-r@elk-tree-studio.iam.gserviceaccount.com
+
       - name: Docker Login
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        run: docker login -u oauth2accesstoken -p $ACCESS_TOKEN https://gcr.io
+        run: cat keyfile.json | docker login -u _json_key --password-stdin https://gcr.io
 
       - name: Docker Push
         run: docker push gcr.io/elk-tree-studio/gitub_actions_studying
