@@ -54,6 +54,9 @@ jobs:
         run: |-
           docker build --tag "gcr.io/elk-tree-studio/gitub_actions_studying:latest" .
 
+      - name: Docker login
+        run: gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin 
+
       - name: Docker Push
         run: docker push gcr.io/elk-tree-studio/gitub_actions_studying:latest
 
