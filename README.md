@@ -16,9 +16,23 @@
 
   * GCE VM使用
 
-  	* 創建一個VM 的 key
+    * 創建一個VM 的 key
 
-  		[文件](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#createsshkeys)
+    [文件](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#createsshkeys)
+
+```bash
+
+$ ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]
+
+```
+
+    * 測試進入
+
+```bash
+
+$ ssh -i ~/.ssh/KEY_FILENAME USERNAME@IP
+
+```
 
   * GCR 使用
 
