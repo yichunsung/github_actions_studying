@@ -39,11 +39,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Build the Docker image
-      - name: Build Image
-        run: |-
-          docker build --tag "gcr.io/elk-tree-studio/gitub_actions_studying:latest" .
-
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@master
         with:
@@ -54,8 +49,13 @@ jobs:
       - name: auth configure-docker
         run: gcloud --quiet auth configure-docker
 
+      # Build the Docker image
+      - name: Build Image
+        run: |-
+          docker build --tag "gcr.io/$PROJECT_ID/gitub_actions_studying:latest" .
+
       - name: Docker Push
-        run: docker push gcr.io/elk-tree-studio/gitub_actions_studying:latest
+        run: docker push gcr.io/$PROJECT_ID/gitub_actions_studying:latest
 
       # Runs a single command using the runners shell
       - name: Successfully
