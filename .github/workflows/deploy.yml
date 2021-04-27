@@ -55,7 +55,7 @@ jobs:
           docker build --tag "gcr.io/elk-tree-studio/gitub_actions_studying:latest" .
 
       - name: Docker Push
-        run: docker push gcr.io/$PROJECT_ID/gitub_actions_studying:latest
+        run: docker push gcr.io/elk-tree-studio/gitub_actions_studying:latest
 
       # Runs a single command using the runners shell
       - name: Successfully
