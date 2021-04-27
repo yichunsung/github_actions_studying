@@ -51,11 +51,11 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
 
-      - run: |-
-        gcloud --quiet auth configure-docker
+      - name: auth configure-docker
+        run: gcloud --quiet auth configure-docker
 
       - name: Docker Push
-        run: docker push gcr.io/elk-tree-studio/gitub_actions_studying
+        run: docker push gcr.io/elk-tree-studio/gitub_actions_studying:latest
 
       # Runs a single command using the runners shell
       - name: Successfully
