@@ -46,18 +46,10 @@ jobs:
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@master
-
-      - name: create key
-        run: gcloud iam service-accounts keys create helloworld-key.json --iam-account=ycsung-r@elk-tree-studio.iam.gserviceaccount.com
-
-      - name: gcloud auth
-        run: gcloud auth activate-service-account ycsung-r@elk-tree-studio.iam.gserviceaccount.com --key-file=helloworld-key.json
-
-      - name: docker key file json building
-        run: gcloud iam service-accounts keys create keyfile.json --iam-account ycsung-r@elk-tree-studio.iam.gserviceaccount.com
-
-      - name: Docker Login
-        run: cat keyfile.json | docker login -u _json_key --password-stdin https://gcr.io
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
 
       - name: Docker Push
         run: docker push gcr.io/elk-tree-studio/gitub_actions_studying
