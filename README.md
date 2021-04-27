@@ -16,9 +16,7 @@
 
   * GCE VM使用
 
-    * 創建一個VM 的 key
-
-    [文件](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#createsshkeys)
+    * 創建一個VM 的 key [文件](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#createsshkeys)
 
 ```bash
 
@@ -26,13 +24,44 @@ $ ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]
 
 ```
 
+
     * 測試進入
+
 
 ```bash
 
 $ ssh -i ~/.ssh/KEY_FILENAME USERNAME@IP
 
 ```
+  
+    * 安裝 Docker 和 Docker-compose
+
+
+```bash
+
+$ sudo apt-get update
+
+```
+
+```bash
+$ sudo apt-get install docker.io
+
+```
+
+```bash
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+```
+
+```bash
+$ chmod +x /usr/local/bin/docker-compose
+```
+
+    * 測試一下是否安裝成功
+
+```bash
+$ sudo docker -v && sudo docker-compose -v
+```
+
 
   * GCR 使用
 
