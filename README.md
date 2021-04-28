@@ -132,6 +132,8 @@ Build 一個image上去
 $ docker build -t gcr.io/[your_gcp_project_id]/[your_image_name]:[tag_name] $PWD
 ```
 
+推上 GCR:
+
 ```bash
 $ gcloud docker -- push DOCKER_IMAGE_NAME:TAG
 ```
