@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          YOYO MAN
+          2021-04-29
         </a>
       </header>
     </div>
