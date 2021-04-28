@@ -32,6 +32,18 @@ $ ssh -i ~/.ssh/KEY_FILENAME USERNAME@IP
 
 ```
 
+* 加密 Key
+
+```bash
+$ gpg --symmetric --cipher-algo AES256 ~/.ssh/KEY_FILENAME
+```
+
+* 移動至專案底下
+
+```bash
+$ mv ~/.ssh/KEY_FILENAME.gpg ./KEY_FILENAME.gpg
+```
+
 * 安裝 Docker 和 Docker-compose
 
 ```bash

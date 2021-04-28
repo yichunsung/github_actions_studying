@@ -57,6 +57,27 @@ jobs:
       - name: Docker Push
         run: docker push gcr.io/elk-tree-studio/gitub_actions_studying:latest
 
+      # decrypt SSH Key
+      - name: Decrypt Key 🚧
+        env:
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+        run: |
+          mkdir $HOME/secrets
+          gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" \
+          --output $HOME/secrets/key helloworld999.gpg
+
+      # test key
+      - name: Check key ✅ ✅
+        run: ls $HOME/secrets/key
+
+      # Primssion
+      - name: Chmod Key 🚚 🚚 
+        run: chmod 700 $HOME/secrets/key
+
+      - name: deploy in GCE
+        run: | 
+          ssh -o StrictHostKeyChecking=no -i $HOME/secrets/key ycsung_r@35.239.9.180 "./deploy.sh"
+
       # Runs a single command using the runners shell
       - name: Successfully
         run: echo Successfully ~~~~~~~~~~~~
