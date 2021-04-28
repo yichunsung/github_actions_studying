@@ -1,0 +1,30 @@
+version: "2"
+services:
+  nginx-proxy:
+    container_name: nginx-docker
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/etc/nginx/vhost.d"
+      - "/usr/share/nginx/html"
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - "/etc/nginx/certs"
+    restart: always
+  letsencrypt-nginx-proxy-companion:
+    container_name: letsencrypt-docker
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    volumes_from:
+      - "nginx-proxy"
+    restart: always
+  client:
+    container_name: netpute-app
+    image: gcr.io/elk-tree-studio/gitub_actions_studying:latest
+    restart: always
+    environment:
+      VIRTUAL_HOST: helloworld999.elk-tree.site
+      LETSENCRYPT_HOST: helloworld999.elk-tree.site
+      LETSENCRYPT_EMAIL: ycsung.r@gmail.com
