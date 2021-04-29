@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          2021-04-29
+          2021-04
         </a>
       </header>
     </div>
