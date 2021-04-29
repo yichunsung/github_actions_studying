@@ -157,7 +157,7 @@ $ docker push cr.io/[your_gcp_project_id]/[your_image_name]:[tag_name]
   
 * 設定Secrets 變數
 
-  * gcloud login
+* gcloud login
 
 ```bash
 
@@ -165,11 +165,51 @@ $ gcloud auth print-access-token
 
 ```
 
-  * 設定你的yml
+* 設定 SA-key
+
+```bash
+$ gcloud iam service-accounts keys create helloworld-key.json \
+    --iam-account=ycsung-r@elk-tree-studio.iam.gserviceaccount.com
+``` 
+
+* 設定解密密碼
+
 
 ## 測試
 
+
+```yml
+test:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Install 🔧💚
+        run: npm install
+
+      - name: Lint 🧐
+        run: npm run lint
+
+      - name: Unit Test 🧐
+        run: npm run test
+
+```
+
 ## 部署
+
+```yml
+
+- name: Chmod Key 🚚 🚚 
+  run: chmod 700 $HOME/secrets/key
+
+- name: deploy in GCE
+  run: | 
+    ssh -o StrictHostKeyChecking=no -i $HOME/secrets/key ycsung_r@35.239.9.180 "./deploy.sh"
+
+```
 
 ## 自動化
 
