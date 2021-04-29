@@ -150,6 +150,9 @@ $ docker push cr.io/[your_gcp_project_id]/[your_image_name]:[tag_name]
 
 ## 設定你的第一個github actions workflows
 
+![github actions](./img/actions.png)
+
+
 ## 使用你的github actions
   
 * 設定Secrets 變數
